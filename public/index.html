@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/socket.io/socket.io.js"></script>
+<script src="jquery.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script>
+var socket = io.connect(window.location.origin);
+  
+function draw(evt) {
+    console.log("check");
+  x = event.touches[0].pageX;
+  y = event.touches[0].pageY;
+  data = {'x': x, 'y': y}
+  socket.emit('mouse', data)
+}
+
+function drawPixel(x,y) {
+  ctx.fillStyle = '#00000';  
+  ctx.fillRect (x, y, size, size);
+}
+
+$(document).ready(function() {
+  $(document).bind("touchmove", draw);
+})
+</script>
+</body>
+</html>
