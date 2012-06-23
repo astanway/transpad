@@ -15,13 +15,20 @@ app.get('/', function (req, res) {
 });
 
 
-function puts(error, stdout, stderr) { sys.puts(stdout) }
+function puts(error, stdout, stderr) {
+    sys.puts(stdout) 
+}
 
 io.sockets.on('connection', function (socket) {  
-  socket.on('mouse', function(data){
+  socket.on('move', function(data){
       x = data['x']
       y = data['y']
-      console.log(y);
-      exec("./click -x " + x  + " -y " + y + "", puts);
+      exec("./click -x " + x + " -y " + y + " -c 0", puts);      
+  })
+  
+  socket.on('tap', function(data){
+      x = data['x']
+      y = data['y']
+      exec("./click -x " + x + " -y " + y + " -c 1", puts);
   })
 });

@@ -5,26 +5,35 @@
 <script src="jquery.js"></script>
 </head>
 <body>
-<div id="container"></div>
 <script>
-var socket = io.connect(window.location.origin);
-  
-function draw(evt) {
-    console.log("check");
-  x = event.touches[0].pageX;
-  y = event.touches[0].pageY;
-  data = {'x': x, 'y': y}
-  socket.emit('mouse', data)
-}
+    var socket = io.connect(window.location.origin);
+    var touchX, touchY = 0;
+    var moveX, moveY = 0;
+    
+    function tapstart(e){
+        touchX = event.changedTouches[0].pageX;
+        touchY = event.changedTouches[0].pageY;
+    }
 
-function drawPixel(x,y) {
-  ctx.fillStyle = '#00000';  
-  ctx.fillRect (x, y, size, size);
-}
+    function tapend(e){
+        if (touchX == event.changedTouches[0].pageX && touchY == event.changedTouches[0].pageY){
+            data = {'x': moveX, 'y': moveY, 'tap': true}
+            socket.emit('tap', data)   
+        }
+    }
+    
+    function move(e) {
+        moveX = event.touches[0].pageX;
+        moveY = event.touches[0].pageY;
+        data = {'x': moveX, 'y': moveY, 'tap': false}
+        socket.emit('move', data)
+    }
 
-$(document).ready(function() {
-  $(document).bind("touchmove", draw);
-})
+    $(document).ready(function() {
+        $(document).bind('touchstart', tapstart)
+        $(document).bind('touchend', tapend)
+        $(document).bind('touchmove', move);
+    })
 </script>
 </body>
 </html>

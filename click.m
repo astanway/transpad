@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
   //
   int x = [args integerForKey:@"x"];
   int y = [args integerForKey:@"y"];
+  int click = [args integerForKey:@"c"];
 
 
   // The data structure CGPoint represents a point in a two-dimensional
@@ -44,8 +45,15 @@ int main(int argc, char *argv[]) {
   // So, we feed coordinates to CGPostMouseEvent, put the mouse there,
   // then click and release.
   //
-  CGPostMouseEvent( pt, 1, 1, 1 );
-  CGPostMouseEvent( pt, 1, 1, 0 );
+  
+  if (click == 0){
+    CGPostMouseEvent( pt, 1, 1, 0 );
+  }
+  
+  if (click == 1){
+    CGPostMouseEvent( pt, 1, 1, 1 );
+    CGPostMouseEvent( pt, 1, 1, 0 );  
+  }
 
 
   [pool release];
