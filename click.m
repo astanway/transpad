@@ -4,7 +4,7 @@
 // click.m
 //
 // Compile with: 
-// gcc -o click click.m -framework ApplicationServices -framework Foundation
+// gcc -o click click.m -framework ApplicationServices -framework Foundation -framework AppKit
 //
 // Usage:
 // ./click -x pixels -y pixels 
@@ -18,43 +18,22 @@
 
 int main(int argc, char *argv[]) {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  NSUserDefaults *args = [NSUserDefaults standardUserDefaults];
 
 
-  // grabs command line arguments -x and -y
-  //
-  int x = [args integerForKey:@"x"];
-  int y = [args integerForKey:@"y"];
-  int click = [args integerForKey:@"c"];
+  // grabs command line arguments
+  int x = (int) strtol(argv[1], NULL, 10);
+  int y = (int) strtol(argv[2], NULL, 10);
+  int click = (int) strtol(argv[3], NULL, 10);
+  NSLog(@"%d, %d", x, y);
 
-
-  // The data structure CGPoint represents a point in a two-dimensional
-  // coordinate system.  Here, X and Y distance from upper left, in pixels.
-  //
-  CGPoint pt;
-  pt.x = x;
-  pt.y = y;
+  // Here, we find the current mouse position so we can update it 
+  // relative to the new offsets
+  CGEventRef mouseEvent = CGEventCreate(NULL);
+  CGPoint pt = CGEventGetLocation(mouseEvent);
+  NSLog(@"%f, %f", pt.x, pt.y);
   
-
-  // Here, we find the current mouse position so we can update it relative to the
-  // new offsets
-  NSPoint mouseLoc;
-  mouseLoc = [NSEvent mouseLocation];
-
-  int diffX = pt.x - mouseLoc.x;
-  int diffY = pt.x - mouseLoc.y;
-  
-  if (diffX < 0){
-      
-  } else {
-      
-  }
-  
-  if (diffY < 0){
-      
-  } else {
-      
-  }
+  pt.x += x;
+  pt.y += y;
 
   // This is where the magic happens.  See CGRemoteOperation.h for details.
   //

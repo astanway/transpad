@@ -9,6 +9,11 @@
     var socket = io.connect(window.location.origin);
     var touchX, touchY = 0;
     var moveX, moveY = 0;
+    var multiplier = 10;
+    
+    function mult(vector){
+      return multiplier * vector;
+    }
     
     function tapstart(e){
         touchX = event.changedTouches[0].pageX;
@@ -17,15 +22,36 @@
 
     function tapend(e){
         if (touchX == event.changedTouches[0].pageX && touchY == event.changedTouches[0].pageY){
-            data = {'x': moveX, 'y': moveY, 'tap': true}
+            data = {'x': 0, 'y': 0, 'tap': true}
             socket.emit('tap', data)
         }
     }
     
     function move(e) {
+        var x, y = 0;
+
+        if (event.touches[0].pageX < moveX){
+            x = mult(-1);
+        } else if (event.touches[0].pageX > moveX){
+            x = mult(1);
+        } else {
+            x = mult(0);
+        }
+        
+        if (event.touches[0].pageY < moveY){
+            y = mult(-1);
+        } else if (event.touches[0].pageY > moveY){
+            y = mult(1);
+        } else {
+            y = mult(0);
+        }
+        
         moveX = event.touches[0].pageX;
         moveY = event.touches[0].pageY;
-        data = {'x': moveX, 'y': moveY, 'tap': false}
+        
+        console.log(moveX);
+        
+        data = {'x': x, 'y': y, 'tap': false}
         socket.emit('move', data)
     }
 
