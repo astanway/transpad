@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+# Execution file for tranny-trackpad for GNU/Linux OS
+#
+# Author :
+#   MARTIN Damien <damien@martin-damien.fr>
+#
+# Requirements :
+#   You will need the 'xautomation' package to run this.
+#
+# License :
+#   GNU/GPL 3
+#
+
+# The relative move on the X axis
+x=$1
+
+# The relative move on the Y axis
+y=$2
+
+# The click : 1 = yes ; O = no
+click=$3
+
+# Move with relative values
+xte "mousermove $x $y"
+
+# Manage clicks
+if [[ "$click" -eq "1" ]]; then
+    xte "mouseclick 1"
+fi
