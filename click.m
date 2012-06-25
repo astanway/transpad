@@ -19,12 +19,10 @@
 int main(int argc, char *argv[]) {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
-
-  // grabs command line arguments
+  // grabs arguments
   int x = (int) strtol(argv[1], NULL, 10);
   int y = (int) strtol(argv[2], NULL, 10);
   int click = (int) strtol(argv[3], NULL, 10);
-  NSLog(@"%d, %d", x, y);
 
   // Here, we find the current mouse position so we can update it 
   // relative to the new offsets
