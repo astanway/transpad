@@ -28,12 +28,15 @@
         }
     }
     
-    function move(e) {        
-        deltaX = event.touches[0].pageX - x;
-        deltaY = event.touches[0].pageY - y;
+    function move(e) {
+        pageX = event.touches[0].pageX;
+        pageY = event.touches[0].pageY;
+      
+        deltaX = pageX - x;
+        deltaY = pageY - y;
         
-        x = event.touches[0].pageX;
-        y = event.touches[0].pageY;
+        x = pageX;
+        y = pageY;
         
         data = {'x': deltaX, 'y': deltaY, 'tap': false}
         socket.emit('move', data)
