@@ -22,7 +22,7 @@
 
     function tapend(e){
         if (touchX == event.changedTouches[0].pageX && touchY == event.changedTouches[0].pageY){
-            data = {'x': moveX, 'y': moveY, 'tap': true}
+            data = {'x': 0, 'y': 0, 'tap': true}
             socket.emit('tap', data)
         }
     }

@@ -31,6 +31,6 @@ io.sockets.on('connection', function (socket) {
   socket.on('tap', function(data){
       x = data['x']
       y = data['y']
-      exec("./click " + x + " " + y + " 0 0 0", puts);
+      exec("./click 0 0 0 0 0", puts);
   })
 });
