@@ -19,10 +19,19 @@ int main(int argc, char *argv[]) {
 
   pt.x += x;
   pt.y += y;
+
+  // make sure we don't go beyond the bounds
+  NSRect screenRect = [[NSScreen mainScreen] frame];
+  if (pt.x > screenRect.size.width || pt.x < 0){
+    pt.x -= x;
+  }
   
-  // NSRect screenRect = [[NSScreen mainScreen] frame];
-  // NSLog(@"%f, %f", screenRect.size.height, screenRect.size.width);
+  if (pt.y > screenRect.size.height || pt.y < 0){
+    pt.y -= y;
+  }
   
+  
+  NSLog(@"%f, %f", screenRect.size.height, screenRect.size.width);  
   NSLog(@"x, y: %d %d", x, y);
   NSLog(@"position: %f %f", pt.x, pt.y);
   

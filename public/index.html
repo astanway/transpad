@@ -8,7 +8,7 @@
 <script>
     var socket = io.connect(window.location.origin);
     var x, y = 0;
-    var moveX, moveY = 0;
+    var startX, startY = 0;
     
     function mult(vector){
       return multiplier * vector;
@@ -17,10 +17,12 @@
     function tapstart(e){
         x = event.changedTouches[0].pageX;
         y = event.changedTouches[0].pageY;
+        startX = x;
+        startY = y;
     }
 
     function tapend(e){
-        if (x == event.changedTouches[0].pageX && y == event.changedTouches[0].pageY){
+        if (startX == event.changedTouches[0].pageX && startY == event.changedTouches[0].pageY){
             data = {'x': 0, 'y': 0, 'tap': true}
             socket.emit('tap', data)
         }
