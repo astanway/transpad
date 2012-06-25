@@ -11,7 +11,7 @@ Fuck em! In the meantime:
 * Connect to this network on your phone
 * Run `ifconfig en0` to get the IP address
 * Fire up `node app.js`
-* Navigate to the aforementioned IP (on port 8080)
+* Navigate to the aforementioned IP on your phone (on port 8080)
 
 ## Holy fuck! My phone is a mouse!
 I know! It can fucking click and shit!
