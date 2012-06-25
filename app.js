@@ -23,14 +23,10 @@ io.sockets.on('connection', function (socket) {
   socket.on('move', function(data){
       x = data['x']
       y = data['y']
-      startX = data['startX']
-      startY = data['startY']
-      exec("./click " + x + " " + y + " 0 " + startX + " " + startY, puts);
+      exec("./click " + x + " " + y + " 0", puts);
   })
   
   socket.on('tap', function(data){
-      x = data['x']
-      y = data['y']
-      exec("./click 0 0 0 0 0", puts);
+      exec("./click 0 0 1", puts);
   })
 });
