@@ -17,19 +17,15 @@ int main(int argc, char *argv[]) {
   CGEventRef mouseEvent = CGEventCreate(NULL);
   CGPoint pt = CGEventGetLocation(mouseEvent);
 
-  pt.x += x;
-  pt.y += y;
-
-  // make sure we don't go beyond the bounds
+  // only move it if we're inside the bounds
   NSRect screenRect = [[NSScreen mainScreen] frame];
-  if (pt.x > screenRect.size.width || pt.x < 0){
-    pt.x -= x;
+  if (pt.x + x < screenRect.size.width && pt.x + x > 0){
+    pt.x += x;
   }
   
-  if (pt.y > screenRect.size.height || pt.y < 0){
-    pt.y -= y;
+  if (pt.y + y < screenRect.size.height && pt.y + y > 0){
+    pt.y += y;
   }
-  
   
   NSLog(@"%f, %f", screenRect.size.height, screenRect.size.width);  
   NSLog(@"x, y: %d %d", x, y);
@@ -45,7 +41,6 @@ int main(int argc, char *argv[]) {
     CGPostMouseEvent( pt, 1, 1, 1 );
     CGPostMouseEvent( pt, 1, 1, 0 );  
   }
-
 
   [pool release];
   return 0;

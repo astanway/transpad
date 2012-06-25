@@ -14,7 +14,6 @@ app.get('/', function (req, res) {
   res.sendfile(__dirname + '/public/index.html');
 });
 
-
 function puts(error, stdout, stderr) {
     sys.puts(stdout) 
 }
