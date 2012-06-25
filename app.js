@@ -1,10 +1,10 @@
-var express = require('express')
-var app = express.createServer()
-var static = require('node-static');
-var jquery = require('jquery');
-var io = require('socket.io').listen(app);
-var sys = require('util')
-var exec = require('child_process').exec;
+var express = require('express'),
+    app = express.createServer(),
+    st = require('node-static'),
+    jquery = require('jquery'),
+    io = require('socket.io').listen(app),
+    sys = require('util'),
+    exec = require('child_process').exec;
 
 app.listen(8080);
 
