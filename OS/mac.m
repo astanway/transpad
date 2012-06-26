@@ -1,5 +1,5 @@
 // Compile with: 
-// gcc -o click click.m -framework ApplicationServices -framework Foundation -framework AppKit
+// gcc -o mac mac.m -framework ApplicationServices -framework Foundation -framework AppKit
 
 #import <Foundation/Foundation.h>
 #import <ApplicationServices/ApplicationServices.h>

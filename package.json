@@ -1,0 +1,9 @@
+{ "name" : "tranny-trackpad"
+, "version" : "1.0.0"
+, "dependencies" : { 
+      "express" : "2.5.8"
+    , "jquery"  : "1.7.2"
+    , "node-static" : "0.5.9"
+    , "socket.io" : "0.9"
+  }
+}
