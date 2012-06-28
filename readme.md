@@ -1,4 +1,3 @@
-![x](http://www.hipsterwave.com/wp-content/uploads/2011/03/70977064-drag-queen.jpg)
 ## What the shit?
 Your phone is _fabulous_, and it knows it. But do you?
 
