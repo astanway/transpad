@@ -29,6 +29,8 @@
     }
     
     function move(e) {
+	e.preventDefault();
+
         pageX = event.touches[0].pageX;
         pageY = event.touches[0].pageY;
       
