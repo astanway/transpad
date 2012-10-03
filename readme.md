@@ -1,3 +1,5 @@
+![](https://raw.github.com/astanway/transpad/master/drag.jpeg)
+
 ## Eh?
 Your phone is _fabulous_, and it knows it. But do you?
 
