@@ -1,4 +1,4 @@
-## What the shit?
+## Eh?
 Your phone is _fabulous_, and it knows it. But do you?
 
 ## I have no idea what's going on.
@@ -13,5 +13,5 @@ Fuck em! In the meantime:
 * Fire up `node app.js`
 * Navigate to the aforementioned IP on your phone (on port 8080)
 
-## Holy fuck! My phone is a mouse!
-I know! It can fucking click and shit!
+## Zomg! My phone is a mouse!
+I know! It can click and shit!
